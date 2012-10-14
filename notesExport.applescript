@@ -17,5 +17,5 @@ tell application "Notes"
 		set filename to (((path to desktop folder) as string) & noteName & ".html")
 		-- my writeToFile(filename, noteBody as text)
 	end repeat
-	display alert "All notes exported." as informational
+	display alert "Notes Export" message "All notes were exported successfully." as informational
 end tell
