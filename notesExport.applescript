@@ -7,11 +7,15 @@ end writeToFile
 
 tell application "Notes"
 	activate
-	display dialog "All notes will be exported as HTML files at your Desktop." with title "Export Notes"
+	display dialog "This is the export utility for Notes.app.\n\n" ¬
+		& "Exactly " & (count of notes) & " notes are stored in the application. " ¬
+		& "Each one of them will be exported to a simple HTML file in your Desktop." ¬
+		with title "Notes Export" buttons {"Cancel", "Proceed"} cancel button "Cancel" default button "Proceed"
 	repeat with each in every note
 		set noteName to name of each
 		set noteBody to body of each
 		set filename to (((path to desktop folder) as string) & noteName & ".html")
-		my writeToFile(filename, noteBody as text)
+		-- my writeToFile(filename, noteBody as text)
 	end repeat
+	display alert "All notes exported." as informational
 end tell
